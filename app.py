@@ -9,14 +9,14 @@ load_dotenv()
 SERVICE_URL = "https://concrete-api-301401238543.europe-west1.run.app/predict"
 API_KEY = os.getenv("API_KEY")
 
-# --- Page Setup ---
+# Page Setup 
 st.set_page_config(
     page_title="Concrete Strength Comparator",
-    page_icon="🧱",  # Tab icon (emoji)
+    page_icon="🧱", 
     layout="wide"
 )
 
-# --- Title and Description ---
+# Title and Description 
 st.title("Concrete Mix Strength Comparator")
 st.caption("Enter up to three different concrete mixes below to compare predicted compressive strengths.")
 
@@ -24,18 +24,18 @@ if not API_KEY:
     st.warning("⚠️ API key not found. Set `API_KEY` in your .env (local) or in Secrets (Hugging Face).")
     st.stop()
 
-# --- Session State for Persistent Results ---
+# Session State for Persistent Results 
 for i in range(1, 4):
     st.session_state.setdefault(f"strength_{i}", None)
 
-# --- Prediction Function ---
+# Prediction Function 
 def get_prediction(params):
     headers = {"x-api-key": API_KEY}
     r = requests.get(SERVICE_URL, headers=headers, params=params, timeout=30)
     r.raise_for_status()
     return round(r.json().get("predicted_strength", 0), 2)
 
-# --- UI Layout for 3 Mixes ---
+# UI Layout for 3 Mixes 
 for i in range(1, 4):
     st.markdown("---")
     st.subheader(f"Mix {i}")
