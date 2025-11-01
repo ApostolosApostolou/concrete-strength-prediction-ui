@@ -8,7 +8,7 @@ It connects to the **FastAPI web service** hosted on Google Cloud Run, which ser
 ## 🌐 Overview
 
 This app serves as the **frontend interface** of the complete concrete strength prediction system.  
-It provides an easy-to-use interface for testing and visualizing model predictions.
+It provides an easy-to-use interface for testing and visualizing model predictions and is fully **containerized using Docker** for easy deployment on the cloud (e.g., Hugging Face Spaces or other cloud platforms).
 
 ### Related Repositories
 - 🧠 [Concrete Strength Prediction Model Training](https://github.com/ApostolosApostolou/concrete-strength-prediction-model-training) — model development and evaluation  
@@ -21,5 +21,5 @@ It provides an easy-to-use interface for testing and visualizing model predictio
 - Real-time predictions via **secure API requests**  
 - Persistent results for each mix  
 - Clean and bright theme with blue accents  
-- Secure API key management (via `.env` locally or Hugging Face Secrets)
-
+- Secure API key management (via `.env` locally or Hugging Face Secrets)  
+- **Containerized app** with Docker for simple and reproducible cloud deployment  

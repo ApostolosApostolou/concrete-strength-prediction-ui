@@ -9,6 +9,31 @@ load_dotenv()
 SERVICE_URL = "https://concrete-api-301401238543.europe-west1.run.app/predict"
 API_KEY = os.getenv("API_KEY")
 
+# Hide the 'Deploy' button (and other Streamlit footer/menu items)
+st.markdown(
+    """
+    <style>
+    [data-testid="stDeployButton"] {visibility: hidden; display: none;}
+    [data-testid="stToolbar"] {visibility: hidden; display: none;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
+# Reduce top padding and spacing
+st.markdown(
+    """
+    <style>
+    /* Remove top padding around main container */
+    .block-container {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Page Setup 
 st.set_page_config(
     page_title="Concrete Strength Comparator",
