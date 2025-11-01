@@ -18,7 +18,17 @@ st.set_page_config(
 
 # Title and Description 
 st.title("Concrete Mix Strength Comparator")
-st.caption("Enter up to three different concrete mixes below to compare predicted compressive strengths.")
+st.caption(
+    """
+    This web app predicts and compares the **compressive strength of concrete** based on its mix composition.  
+    It is part of a 3-repository project that includes:  
+    - 🧠 [Model Training](https://github.com/ApostolosApostolou/concrete-strength-prediction-model-training) — development and optimization of a Random Forest regression model  
+    - ⚙️ [API Service](https://github.com/ApostolosApostolou/concrete-strength-prediction-api) — FastAPI deployment on Google Cloud Run providing secure access to predictions  
+    
+    The model was trained on the [Concrete Compressive Strength Dataset](https://archive.ics.uci.edu/dataset/165/concrete+compressive+strength) from the UCI Machine Learning Repository.  
+    This app allows users to test up to **three concrete mixes simultaneously** and view their predicted strengths in real time.
+    """
+)
 
 if not API_KEY:
     st.warning("⚠️ API key not found. Set `API_KEY` in your .env (local) or in Secrets (Hugging Face).")
@@ -45,16 +55,16 @@ for i in range(1, 4):
     with left_col:
         st.markdown("**Input Parameters**")
         c1, c2, c3, c4 = st.columns(4)
-        cement = c1.number_input("Cement (kg/m³)", min_value=0.0, value=500.0, key=f"cement_{i}")
-        slag = c2.number_input("Blast Furnace Slag (kg/m³)", min_value=0.0, value=2.0, key=f"slag_{i}")
-        fly_ash = c3.number_input("Fly Ash (kg/m³)", min_value=0.0, value=1.0, key=f"flyash_{i}")
-        water = c4.number_input("Water (kg/m³)", min_value=0.0, value=200.0, key=f"water_{i}")
+        cement = c1.number_input("Cement (kg/m³)", min_value=0.0, value=213.7, key=f"cement_{i}")
+        slag = c2.number_input("Blast Furnace Slag (kg/m³)", min_value=0.0, value=98.1, key=f"slag_{i}")
+        fly_ash = c3.number_input("Fly Ash (kg/m³)", min_value=0.0, value=24.5, key=f"flyash_{i}")
+        water = c4.number_input("Water (kg/m³)", min_value=0.0, value=181.7, key=f"water_{i}")
 
         c5, c6, c7, c8 = st.columns(4)
-        superplasticizer = c5.number_input("Superplasticizer (kg/m³)", min_value=0.0, value=3.0, key=f"superplasticizer_{i}")
-        coarse = c6.number_input("Coarse Aggregate (kg/m³)", min_value=0.0, value=1000.0, key=f"coarse_{i}")
-        fine = c7.number_input("Fine Aggregate (kg/m³)", min_value=0.0, value=700.0, key=f"fine_{i}")
-        age = c8.number_input("Age (days)", min_value=1, value=25, key=f"age_{i}")
+        superplasticizer = c5.number_input("Superplasticizer (kg/m³)", min_value=0.0, value=6.9, key=f"superplasticizer_{i}")
+        coarse = c6.number_input("Coarse Aggregate (kg/m³)", min_value=0.0, value=1065.8, key=f"coarse_{i}")
+        fine = c7.number_input("Fine Aggregate (kg/m³)", min_value=0.0, value=785.4, key=f"fine_{i}")
+        age = c8.number_input("Age (days)", min_value=1, value=3, key=f"age_{i}")
 
         if st.button(f"Predict Strength for Mix {i}", key=f"predict_{i}"):
             with st.spinner("Predicting..."):
