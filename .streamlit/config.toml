@@ -1,0 +1,7 @@
+[theme]
+base="light"                      # "light" or "dark"
+primaryColor="#2E86C1"            # blue accent color
+backgroundColor="#FFFFFF"         # main background
+secondaryBackgroundColor="#F5F7FB"# sidebar, widgets
+textColor="#0A0A0A"               # black text
+font="sans serif"                 # clean modern font
